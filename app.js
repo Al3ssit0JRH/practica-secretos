@@ -1,4 +1,8 @@
-// Conexión a la API (¡mala práctica a propósito!)
-const STRIPE_KEY = "sk_live_4eC39HqLyjWDarjtT1zdp7dc";
+const STRIPE_KEY = process.env.STRIPE_KEY;
 
-console.log("App iniciada");
+if (!STRIPE_KEY) {
+  console.error("Falta STRIPE_KEY en el archivo .env");
+  process.exit(1);
+}
+
+console.log("App iniciada con la llave cargada desde .env");
